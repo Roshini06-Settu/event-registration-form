@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Registration</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+body{
+    margin:0;padding:0;font-family:'Poppins',sans-serif;text-align:center;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#a1c4fd,#c2e9fb);
+background-size:400% 400%;animation:grad 10s ease infinite;color:#333
+}
+@keyframes grad{
+0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+#formDiv{margin-top:40px;padding:20px}
+input,select,button{padding:8px;margin:6px;border-radius:5px;border:1px solid #aaa}
+button{background:#333;color:#fff;cursor:pointer}
+#successDiv{margin-top:40px}
+#details{font-size:18px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div id="formDiv">
+<h2>Event Registration</h2>
+<form onsubmit="register();return false;">
+Name:<input id="name" required><br><br>
+Email:<input type="email" id="email" required><br><br>
+Phone:<input type="tel" id="phone" required><br><br>
+    Address:<input id="address" required><br><br>
+Event:<select id="event" required>
+<option value="">--Choose--</option>
+<option>Tech Talk</option>
+<option>Workshop</option>
+<option>Music Night</option>
+<option>Seminar</option>
+<option>Conference</option>
+<option>Other</option>
+</select><br><br>
+Members:<input type="number" id="members" min="1" value="1" required><br><br>
+Payment Mode:<select id="payment" required>
+<option value="">--Select--</option>
+<option>Cash</option>
+<option>Card</option>
+<option>UPI</option>
+<option>Net Banking</option>
+<option>Wallet</option>
+<option>Other</option>
+</select><br><br>
+<button type="submit">Register</button>
+</form>
+</div>
+
+<div id="successDiv" style="display:none">
+<h1 style="color:green">✅ Registered Successfully!</h1>
+<div id="details"></div><br>
+</div>
+
+<script>
+function register(){
+var n=document.getElementById('name').value;
+    var e=document.getElementById('email').value;
+var p=document.getElementById('phone').value;
+var a=document.getElementById('address').value;
+var ev=document.getElementById('event').value;
+    var m=document.getElementById('members').value;
+var pay=document.getElementById('payment').value;
+var dt=new Date().toLocaleString();
+document.getElementById('details').innerHTML=
+"<b>Name:</b> "+n+"<br>"+
+"<b>Email:</b> "+e+"<br>"+
+    "<b>Phone:</b> "+p+"<br>"+
+"<b>Address:</b> "+a+"<br>"+
+"<b>Event:</b> "+ev+"<br>"+
+"<b>Members:</b> "+m+"<br>"+
+"<b>Payment Mode:</b> "+pay+"<br>"+
+"<b>Date & Time:</b> "+dt;
+    document.getElementById('formDiv').style.display="none";
+document.getElementById('successDiv').style.display="block";
+}
+</script>
+
+</body>
+</html>
